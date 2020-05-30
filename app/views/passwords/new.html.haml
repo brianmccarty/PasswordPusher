@@ -2,9 +2,9 @@
 = form_for @password do |f|
   %p
     %div.title
-      %span.title Password Pusher
+      %span.title CPI Password Pusher
       %br
-      %span.tagline Go Ahead.  Email Another Password.
+      -# %span.tagline Go Ahead.  Email Another Password.
   %p.payload
     = f.text_field(:payload, { :class => "password", :value => PAYLOAD_INITIAL_TEXT, :onfocus => "prepareTextField(this)", :onblur => "revertTextField(this)", :autocomplete => "off" })
   %p
@@ -28,16 +28,16 @@
   %p
     %span
       #cookie-save.cookie-save
-        %a{ :onclick => "saveExpirations()", :href => "#" } Save
-        these settings as
-        %i default
-        in a browser cookie.
+      -#  %a{ :onclick => "saveExpirations()", :href => "#" } Save
+      -#  these settings as
+      -#  %i default
+      -#  in a browser cookie.
   %p= f.submit(:value => "Push it!")
 
 
 %p.notes
   %span.tip
-    * Tip: Only enter the password into the box.  Other identifying information can compromise security.
+    * Only enter the password into the box.  Other identifying information can compromise security.
   %p
   %span.note
     All passwords are encrypted prior to storage and are available to only those with the secret link.
@@ -46,8 +46,8 @@
     Once expired, encrypted passwords are unequivocally deleted from the database.
 
 %p.notes
-  = link_to "FAQ", page_path('faq')
+  -# = link_to "FAQ", page_path('faq')
   \|
-  = link_to "Images, Logos and Icons", 'https://github.com/pglombardo/PasswordPusher/tree/master/app/assets/images'
+  -# = link_to "Images, Logos and Icons", 'https://github.com/pglombardo/PasswordPusher/tree/master/app/assets/images'
   \|
-  = link_to "About PasswordPusher", page_path('about')
+  -# = link_to "About PasswordPusher", page_path('about')
