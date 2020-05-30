@@ -17,9 +17,8 @@
       = range_field_tag("password_expire_after_views", EXPIRE_AFTER_VIEWS_DEFAULT, {:name => "password[expire_after_views]", :class => "slider", :min => EXPIRE_AFTER_VIEWS_MIN, :max => EXPIRE_AFTER_VIEWS_MAX, :step => "1", :onchange => "showViewsValue(this.value)", :oninput => "showViewsValue(this.value)"})
       %span#viewsrange
         == #{EXPIRE_AFTER_VIEWS_DEFAULT} Views
-    %br
       %span.note
-        (whichever comes first)
+        whichever comes first
     - if DELETABLE_BY_VIEWER_PASSWORDS
       %p.notes
         = check_box_tag "password[deletable_by_viewer]", nil, DELETABLE_BY_VIEWER_DEFAULT
@@ -47,7 +46,7 @@
 
 %p.notes
   -# = link_to "FAQ", page_path('faq')
-  \|
+  -# \|
   -# = link_to "Images, Logos and Icons", 'https://github.com/pglombardo/PasswordPusher/tree/master/app/assets/images'
-  \|
+  -# \|
   -# = link_to "About PasswordPusher", page_path('about')
