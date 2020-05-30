@@ -22,9 +22,7 @@
             %button.btn.btn-link{ "data-clipboard-target" => "#url" }
               = image_tag('button_up.png')
         %span.note
-          This note won't be shown again...
-          %br/
-          Don't believe me?  Go ahead.  Hit reload...
+          This note will not be shown again.
     %p
       Your password is...
 
@@ -35,7 +33,7 @@
       %p Copy Password to Clipboard
 
     %p.pwinstructions
-      Please obtain and securely store this password elsewhere, ideally in a password manager.
+      Please obtain and securely store this password elsewhere.
 
     %p
       - if @password.views_remaining == 0
@@ -45,11 +43,5 @@
         == or #{pluralize(@password.views_remaining, 'more view')} (whichever occurs first).
     - if @password.deletable_by_viewer
       %p{ :style => 'font-size: .85em;' }
-        = link_to "Nah. I've got it. Delete this secret link now.", password_path, :id => @password.url_token, :method => :delete, :data => { :confirm => 'This will expire this secret link and remove the password from the PasswordPusher database forever.  Are you sure?' }
+        = link_to "Delete this secret link now.", password_path, :id => @password.url_token, :method => :delete, :data => { :confirm => 'This will expire this secret link and remove the password from the PasswordPusher database forever.  Are you sure?' }
 %div.footer_note
-  This
-  - if @password.expired
-    (unfortunately expired)
-  password link is brought to you by
-  = link_to "Password Pusher", "/"
-  and viewers like you.
