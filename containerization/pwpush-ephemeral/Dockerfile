@@ -6,14 +6,15 @@ FROM docker.io/ubuntu:18.04
 
 ENV APP_ROOT=/opt/PasswordPusher
 ENV PATH=${APP_ROOT}:${PATH} HOME=${APP_ROOT}
-RUN ln -fs /usr/share/zoneinfo/Europe/Paris > /etc/localtime
-RUN apt-get update -qq && \
-    apt-get install -y --assume-yes build-essential git curl ruby2.5 ruby2.5-dev tzdata sqlite3 ruby-sqlite3 libsqlite3-dev zlib1g-dev && \
-    cd /opt && \
-    git clone https://github.com/pglombardo/PasswordPusher.git && \
-    touch ${APP_ROOT}/log/private.log && \
-    cd ${APP_ROOT} && \
-    gem install bundler && \
+RUN ln -fs /usr/share/zoneinfo/America/Los_Angeles > /etc/localtime
+RUN apt-get update -qq
+RUN apt-get install -y --assume-yes build-essential git curl ruby2.5 ruby2.5-dev tzdata sqlite3 ruby-sqlite3 libsqlite3-dev zlib1g-dev
+RUN cd /opt && \
+    git clone https://github.com/brianmccarty/PasswordPusher.git && \
+    touch ${APP_ROOT}/log/private.log
+RUN cd ${APP_ROOT} && \
+    gem update --system && \
+    gem install bundler:1.17.3 && \
     gem install thor && \
     chown -R 1001:root ${APP_ROOT}
 
